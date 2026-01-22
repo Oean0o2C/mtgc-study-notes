@@ -1,0 +1,351 @@
+# 网站首页
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTGC论文学习笔记</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown-dark.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #e6edf3;
+            background: #0d1117;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 280px;
+            padding: 30px 20px;
+            border-right: 1px solid #30363d;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar h2 {
+            color: #58a6ff;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 8px 0;
+        }
+        
+        .nav-links a {
+            color: #c9d1d9;
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        
+        .nav-links a:hover {
+            background: #161b22;
+            color: #58a6ff;
+        }
+        
+        .nav-links a.active {
+            background: #1f6feb;
+            color: white;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 30px 40px;
+        }
+        
+        .markdown-body {
+            background: transparent;
+            font-size: 16px;
+        }
+        
+        .header {
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #58a6ff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header .subtitle {
+            color: #8b949e;
+            font-size: 1.1em;
+        }
+        
+        .meta {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            color: #8b949e;
+            font-size: 0.9em;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #21262d;
+            border-radius: 3px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #1f6feb, #58a6ff);
+            width: 25%; /* 进度百分比 */
+            border-radius: 3px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            color: #8b949e;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #13233a;
+            color: #58a6ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                border-right: none;
+                border-bottom: 1px solid #30363d;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 侧边栏 -->
+        <nav class="sidebar">
+            <h2>📚 MTGC学习笔记</h2>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">🏠 首页</a></li>
+                <li><a href="#about">📄 论文简介</a></li>
+                <li><a href="#methodology">🔬 方法论</a></li>
+                <li><a href="#experiments">📊 实验分析</a></li>
+                <li><a href="#code">💻 代码实现</a></li>
+                <li><a href="#resources">📎 资源链接</a></li>
+            </ul>
+            
+            <div style="margin-top: 40px;">
+                <h3>🏷️ 标签分类</h3>
+                <div style="margin-top: 15px;">
+                    <span class="tag">GNN</span>
+                    <span class="tag">对比学习</span>
+                    <span class="tag">时空数据</span>
+                    <span class="tag">城市计算</span>
+                    <span class="tag">多尺度</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <h3>📈 学习进度</h3>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="progress-label">
+                    <span>25% 完成</span>
+                    <span>第3周 / 10周</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; color: #8b949e; font-size: 0.9em;">
+                <p>📅 最后更新: 2025-01-22</p>
+                <p>👨‍💻 作者: [你的名字]</p>
+            </div>
+        </nav>
+        
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <div class="header">
+                <h1>Multi-Scale Temporal Graph Contrastive Embedding</h1>
+                <p class="subtitle">城市区域表示的多尺度时序图对比嵌入</p>
+                <div class="meta">
+                    <span>📖 论文精读笔记</span>
+                    <span>🎯 从0到1系统学习</span>
+                    <span>⏱️ 预计用时: 10周</span>
+                </div>
+            </div>
+            
+            <article class="markdown-body">
+                <!-- 这里的内容会由JavaScript动态加载 -->
+                <div id="content">
+                    <h2>🏠 欢迎来到MTGC学习笔记</h2>
+                    <p>这是我系统学习《Multi-Scale Temporal Graph Contrastive Embedding for urban region representation》论文的完整记录。</p>
+                    
+                    <h3>🎯 学习目标</h3>
+                    <ul>
+                        <li>深入理解MTGC模型的理论基础</li>
+                        <li>掌握多尺度时空图建模方法</li>
+                        <li>实现模型核心组件</li>
+                        <li>应用于相关城市计算任务</li>
+                    </ul>
+                    
+                    <h3>📋 学习计划</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>阶段</th>
+                                <th>周次</th>
+                                <th>主要内容</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>基础准备</td>
+                                <td>1-2</td>
+                                <td>GNN、对比学习、时空数据基础</td>
+                                <td>✅ 已完成</td>
+                            </tr>
+                            <tr>
+                                <td>论文精读</td>
+                                <td>3-5</td>
+                                <td>逐章节深入理解</td>
+                                <td>🟡 进行中</td>
+                            </tr>
+                            <tr>
+                                <td>代码实现</td>
+                                <td>6-8</td>
+                                <td>复现模型核心模块</td>
+                                <td>⏳ 待开始</td>
+                            </tr>
+                            <tr>
+                                <td>拓展应用</td>
+                                <td>9-10</td>
+                                <td>迁移到新任务，改进思考</td>
+                                <td>⏳ 待开始</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h3>📁 笔记结构</h3>
+                    <pre><code class="language-bash">mtgc-study-notes/
+├── notes/              # 所有学习笔记
+├── code/              # 代码实现
+├── papers/            # 相关论文
+├── datasets/          # 数据集说明
+└── slides/            # 学习汇报PPT</code></pre>
+                    
+                    <blockquote>
+                        <p>💡 <strong>学习建议</strong>：建议按顺序阅读笔记，每个章节都有练习和思考题。</p>
+                    </blockquote>
+                </div>
+            </article>
+        </main>
+    </div>
+    
+    <script>
+        // 简单的页面导航
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 移除所有active类
+                document.querySelectorAll('.nav-links a').forEach(a => {
+                    a.classList.remove('active');
+                });
+                
+                // 添加当前active
+                this.classList.add('active');
+                
+                // 根据id加载不同内容（简化版）
+                const sectionId = this.getAttribute('href').substring(1);
+                updateContent(sectionId);
+            });
+        });
+        
+        function updateContent(section) {
+            const contentDiv = document.getElementById('content');
+            const titles = {
+                'home': '🏠 首页',
+                'about': '📄 论文简介',
+                'methodology': '🔬 方法论',
+                'experiments': '📊 实验分析',
+                'code': '💻 代码实现',
+                'resources': '📎 资源链接'
+            };
+            
+            // 简化版内容切换（实际应用中应该加载不同的Markdown文件）
+            if (section === 'about') {
+                contentDiv.innerHTML = `
+                    <h2>${titles[section]}</h2>
+                    <h3>论文基本信息</h3>
+                    <p><strong>标题:</strong> Multi-Scale Temporal Graph Contrastive Embedding for urban region representation</p>
+                    <p><strong>作者:</strong> Yue Li, Xinzheng Niu, Jiahui Zhu, Shuai Wen, Fan Min</p>
+                    <p><strong>发表:</strong> 某期刊/会议 2025</p>
+                    
+                    <h3>📖 摘要</h3>
+                    <p>从人类移动数据和地理信息中提取区域特征对于下游城市管理任务（如犯罪预测、签到预测和土地利用聚类）至关重要。现有的方法通常关注城市区域的空间维度，或从单一尺度视角分析时间动态。然而，由于对区域内时间异质性的表征不足，它们往往难以捕捉城市动态的复杂性。本文提出了一种称为多尺度时序图对比嵌入（MTGC）的方案，该方案在不同时间尺度上建模人类移动模式，以有效捕捉局部和动态变化。</p>
+                    
+                    <h3>🎯 核心贡献</h3>
+                    <ol>
+                        <li>提出多尺度时序建模框架（日、周、月尺度）</li>
+                        <li>设计基于自编码器的对比学习模块</li>
+                        <li>在真实数据集上验证了有效性</li>
+                    </ol>
+                `;
+            } else if (section === 'methodology') {
+                contentDiv.innerHTML = `
+                    <h2>${titles[section]}</h2>
+                    <p>这部分笔记正在完善中...</p>
+                    <p>请查看 <a href="notes/02-methodology.md">详细笔记</a></p>
+                `;
+            } else if (section === 'home') {
+                // 恢复首页内容
+                window.location.reload();
+            } else {
+                contentDiv.innerHTML = `
+                    <h2>${titles[section]}</h2>
+                    <p>该部分内容正在建设中，敬请期待！</p>
+                    <p>预计完成时间: 2025年2月</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
